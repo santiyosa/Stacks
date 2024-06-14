@@ -1,3 +1,4 @@
+// Se crea la clase que le da formato al nodo, ademas con formato generico
 class NodeStack<T> {
   data: T
   next: NodeStack <T>| null
@@ -6,27 +7,30 @@ class NodeStack<T> {
       this.next = next
   }
 }
-
+// Creamos la clase que tendra el stack
 class Stack<T>{
   top: NodeStack<T> | null
   constructor() {
       this.top = null 
   }
-  push(element: T) {
-      let node = new NodeStack(element, this.top)
+  // Creamos el metodo push que agregara valores al stack
+  push(value: T) {
+      let node = new NodeStack(value, this.top)
       this.top = node
   }
+    // Creamos el metodo pop que sacara los valores al stack
   pop(): T | null {
     if (this.top !== null) {
-          let element = this.top.data
+          let value = this.top.data
         this.top = this.top.next
-        return element
+        return value
     } else {
-        console.log("Stack is empty")
+        console.log("Stack empty")
         return null;
     }
 }
 }
+
 const stack = new Stack()
 stack.push(10) 
 stack.push("Hola") 
